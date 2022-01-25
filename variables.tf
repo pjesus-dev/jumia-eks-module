@@ -68,7 +68,7 @@ variable "public_subnet_cluster_tag" {
   type        = map(any)
   description = "Tagging to allow cluster to deploy ELB using kubernetes annotations on service"
   default = {
-    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+    "kubernetes.io/cluster/" = "shared"
     "kubernetes.io/role/elb"                        = 1
   }
 }
@@ -101,7 +101,7 @@ variable "eks_managed_node_group_defaults" {
     ami_type               = "AL2_x86_64"
     disk_size              = 50
     instance_types         = ["t3.medium"]
-    vpc_security_group_ids = [aws_security_group.allow-web-traffic.id]
+    vpc_security_group_ids = ["${aws_security_group.allow-web-traffic.id}"]
   }
 }
 
