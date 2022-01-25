@@ -37,21 +37,21 @@ variable "public_subnet_cidrs" {
   }
 }
 
-variable "private_subnet_cidrs" {
-  type        = map(any)
-  description = "Map - key = CIDR, value = availability zone"
-  default = {
-    "" = "eu-west-2a"
-    "" = "eu-west-2b"
-    "" = "eu-west-2c"
-  }
-}
+# variable "private_subnet_cidrs" {
+#   type        = map(any)
+#   description = "Map - key = CIDR, value = availability zone"
+#   default = {
+#     "" = "eu-west-2a"
+#     "" = "eu-west-2b"
+#     "" = "eu-west-2c"
+#   }
+# }
 
-variable "public_subnets_ids_to_private" {
-  type        = list(any)
-  description = "List of public subnet IDs to attach each Nat gateway, match the values with the availability zones of the private subnet that the natgateway will be attached"
-  default     = [""]
-}
+# variable "public_subnets_ids_to_private" {
+#   type        = list(any)
+#   description = "List of public subnet IDs to attach each Nat gateway, match the values with the availability zones of the private subnet that the natgateway will be attached"
+#   default     = [""]
+# }
 
 variable "shared_tags" {
   type        = map(any)
@@ -73,14 +73,14 @@ variable "public_subnet_cluster_tag" {
   }
 }
 
-variable "private_subnet_cluster_tag" {
-  type        = map(any)
-  description = "Tagging to allow cluster to deploy ELB using kubernetes annotations on service"
-  default = {
-    "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
-    "kubernetes.io/role/internal-elb"               = 1
-  }
-}
+# variable "private_subnet_cluster_tag" {
+#   type        = map(any)
+#   description = "Tagging to allow cluster to deploy ELB using kubernetes annotations on service"
+#   default = {
+#     "kubernetes.io/cluster/${var.eks_cluster_name}" = "shared"
+#     "kubernetes.io/role/internal-elb"               = 1
+#   }
+# }
 
 
 #------------------Cluster variables----------------
